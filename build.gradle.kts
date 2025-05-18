@@ -1,6 +1,8 @@
 plugins {
     kotlin("jvm") version "2.1.20"
     id("com.gradleup.shadow") version "8.3.3"
+    id("maven-publish")
+
 }
 
 group = "dev.cirosanchez"
@@ -23,4 +25,18 @@ tasks.test {
 }
 kotlin {
     jvmToolchain(21)
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            artifact(tasks.named("shadowJar").get()) {
+                classifier = null
+            }
+            groupId = "dev.cirosanchez"
+            artifactId = "mongodbstandalone"
+            version = "v0.0.1"
+
+        }
+    }
 }
