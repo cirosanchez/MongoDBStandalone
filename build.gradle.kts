@@ -1,0 +1,26 @@
+plugins {
+    kotlin("jvm") version "2.1.20"
+    id("com.gradleup.shadow") version "8.3.3"
+}
+
+group = "dev.cirosanchez"
+version = "1.0-SNAPSHOT"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation(kotlin("test"))
+    implementation("org.mongodb:bson:4.3.4")
+    implementation("org.mongodb:mongodb-driver-kotlin-sync:4.11.0")
+    implementation("com.google.code.gson:gson:2.13.1")
+    implementation(kotlin("reflect"))
+}
+
+tasks.test {
+    useJUnitPlatform()
+}
+kotlin {
+    jvmToolchain(21)
+}
