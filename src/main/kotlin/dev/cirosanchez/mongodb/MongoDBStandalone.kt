@@ -14,7 +14,7 @@ class MongoDBStandalone {
 
     fun setupMongo(){
         instance = this
-        MongoDB.mongo(MongoDB.Settings())
+        MongoDB.mongo(MongoDB.Settings(mongoURI, mongoDB))
     }
 }
 

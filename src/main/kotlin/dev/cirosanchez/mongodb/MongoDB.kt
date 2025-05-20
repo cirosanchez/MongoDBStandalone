@@ -51,10 +51,7 @@ object MongoDB {
     fun <T : Any> collection(name: String, `class`: Class<T>): MongoCollection<T> =
         database.getCollection(name, `class`)
 
-    class Settings {
-        var uri: String = MongoDBStandalone.get().mongoURI
-        var database: String = MongoDBStandalone.get().mongoDB
-    }
+    data class Settings(val uri: String, val database: String)
 
     val collections = mutableMapOf<KClass<out MongoSerializable>, TwilightMongoCollection<out MongoSerializable>>()
 
