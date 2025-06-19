@@ -35,7 +35,6 @@ object MongoDB {
     internal val executor: Executor = Executors.newCachedThreadPool()
 
     fun mongo(mongo: Settings) {
-        println("AAAAAAAAAAAAAAAAAAAAAAAAA")
         client = MongoClient.create(
             MongoClientSettings.builder()
                 .uuidRepresentation(UuidRepresentation.STANDARD)
@@ -146,7 +145,6 @@ data class IdField(val clazz: KClass<out MongoSerializable>) {
 
     init {
         val idFields = clazz.declaredMemberProperties.filter { it.javaField?.isAnnotationPresent(Id::class.java) == true }
-        println(idFields)
 
         require(idFields.size == 1) {
             when (idFields.size) {
