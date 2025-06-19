@@ -35,6 +35,7 @@ object MongoDB {
     internal val executor: Executor = Executors.newCachedThreadPool()
 
     fun mongo(mongo: Settings) {
+        println("AAAAAAAAAAAAAAAAAAAAAAAAA")
         client = MongoClient.create(
             MongoClientSettings.builder()
                 .uuidRepresentation(UuidRepresentation.STANDARD)

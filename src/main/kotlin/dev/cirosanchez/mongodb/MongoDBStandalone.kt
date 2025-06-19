@@ -12,14 +12,18 @@ class MongoDBStandalone {
         }
     }
 
-    fun setupMongo(){
+    init {
         instance = this
+    }
+
+    fun setupMongo(){
         MongoDB.mongo(MongoDB.Settings(mongoURI, mongoDB))
     }
 }
 
 fun mongoDBStandalone(unit: MongoDBStandalone.() -> Unit = {}): MongoDBStandalone {
     return MongoDBStandalone().apply {
+        unit()
         setupMongo()
     }
 }
